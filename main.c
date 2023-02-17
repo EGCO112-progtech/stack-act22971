@@ -36,8 +36,10 @@ push(&s,5);
        switch(argv[i][j]){
          case '[':push(&s,argv[i][j]); type=0; count++; break;
          case '{':push(&s,argv[i][j]); type=0; count++; break;
-         case ']':if(pop(&s)!='['&&s.top!=NULL){ type=3;} count--; break;
-         case '}':if(pop(&s)!='{'&&s.top!=NULL){ type=3;} count--;  break;
+         case ']':if(s.top==NULL){} 
+           if(pop(&s)!='['||s.top!=NULL){ type=3;} count--; break;
+         case '}':if(s.top==NULL){} 
+           if(pop(&s)!='{'||s.top!=NULL){ type=3;} count--;  break;
        }
       
        /* Use stack to help with the parentheses*/
@@ -57,6 +59,6 @@ push(&s,5);
   
 
 
-
+//./stack {[]}[] {[]] [] {{ }}
    return 0;
 }
